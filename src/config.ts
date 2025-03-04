@@ -1,0 +1,1 @@
+export const API_URL = "https://tenis-laser-backend0.azurewebsites.net/api"; 
