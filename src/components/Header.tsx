@@ -15,7 +15,7 @@ export function Header({ onInicio, onLogout, isLoggedIn }: HeaderProps) {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <img 
-            src="https://source.unsplash.com/40x40/?tennis-ball" 
+            src="assets\Imagen de WhatsApp 2025-03-03 a las 20.42.35_ad0cf4c2.jpg" 
             alt="Logo Tenis" 
             className="w-8 h-8 rounded-full object-cover"
           />

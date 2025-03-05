@@ -45,7 +45,10 @@ export function CreditList({ customer, onSelectCredit, onBack }: CreditListProps
                   ${credit.amount.toLocaleString()}
                 </h3>
                 <p className="text-sm text-gray-500">
-                  Fecha: {new Date(credit.date).toLocaleDateString()}
+                  Fecha: {credit.date}
+                </p>
+                <p className="text-sm text-gray-500">
+                  Estado: {credit.status === 'completed' ? 'Pagado' : credit.status === 'overdue' ? 'En Mora' : 'Activo'}
                 </p>
               </div>
             </div>
@@ -54,11 +57,13 @@ export function CreditList({ customer, onSelectCredit, onBack }: CreditListProps
                 {credit.installments.length} cuotas
               </span>
               <span className={`px-3 py-1 rounded-full text-sm ${
-                credit.status === 'active' 
+                credit.status === 'overdue' 
                   ? 'bg-red-100 text-red-800' 
-                  : 'bg-gray-100 text-gray-800'
+                  : credit.status === 'completed' 
+                  ? 'bg-gray-100 text-gray-800' 
+                  : 'bg-yellow-100 text-yellow-800'
               }`}>
-                {credit.status === 'active' ? 'Activo' : 'Completado'}
+                {credit.status === 'completed' ? 'Pagado' : credit.status === 'overdue' ? 'En Mora' : 'Activo'}
               </span>
             </div>
           </div>

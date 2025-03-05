@@ -56,7 +56,9 @@ export async function getCreditosByCliente(clienteId: number): Promise<Credit[]>
     id: credito.credito_id,
     amount: credito.valorCredito,
     date: credito.fechaSolicitud,
-    status: credito.estado === "Pagado" ? "completed" : "active",
+    status: credito.estado === "Pagado" ? "completed" : 
+            credito.estado === "En Mora" ? "overdue" : 
+            "confirmed",
     installments: credito.cuotas.map((cuota: any) => ({
       id: cuota.numero,
       number: cuota.numero,

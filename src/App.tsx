@@ -38,6 +38,11 @@ function App() {
     }
   }, [selectedCustomer, selectedCredit]);
 
+  useEffect(() => {
+    // Desplazar al principio de la página cada vez que se carga una vista
+    window.scrollTo(0, 0);
+  }, [selectedStore, selectedCustomer, selectedCredit]); // Dependencias para que se ejecute al cambiar de vista
+
   const handleSelectStore = (store: Store) => {
     setSelectedStore(store);
     // Reiniciar estados inferiores
