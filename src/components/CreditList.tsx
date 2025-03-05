@@ -40,15 +40,12 @@ export function CreditList({ customer, onSelectCredit, onBack }: CreditListProps
           >
             <div className="flex items-center gap-3 mb-4">
               <CreditCard className="w-6 h-6 text-red-600" />
-              <div>
+              <div className="flex-grow">
                 <h3 className="text-lg font-semibold text-gray-800">
                   ${credit.amount.toLocaleString()}
                 </h3>
                 <p className="text-sm text-gray-500">
                   Fecha: {credit.date}
-                </p>
-                <p className="text-sm text-gray-500">
-                  Estado: {credit.status === 'completed' ? 'Pagado' : credit.status === 'overdue' ? 'En Mora' : 'Activo'}
                 </p>
               </div>
             </div>
