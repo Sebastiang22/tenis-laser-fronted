@@ -1,1 +1,1 @@
-export const API_URL = "https://tenis-laser-backend0.azurewebsites.net/"; // Cambiar la URL de la API al nuevo servidor backend
+export const API_URL = "https://tenis-laser-backend0.azurewebsites.net"; // Cambiar la URL de la API al nuevo servidor backend
