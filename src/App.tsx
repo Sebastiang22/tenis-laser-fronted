@@ -61,6 +61,7 @@ function App() {
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
+    getTiendas().then((tiendas) => setStores(tiendas)); // Cargar tiendas al iniciar sesión
   };
 
   const handleLogout = () => {

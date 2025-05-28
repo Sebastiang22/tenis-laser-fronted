@@ -2,7 +2,7 @@ import { Store, Customer, Credit } from "./types";
 import { API_URL } from "./config"; // Importar la URL de la API
 
 export async function getTiendas(): Promise<Store[]> {
-  const response = await fetch(`${API_URL}/tiendas`);
+  const response = await fetch(`${API_URL}/api/tiendas`);
   const data = await response.json();
   // Se asume que la API retorna un arreglo de objetos con { id, nombre, creditos_confirmados }
   return data.map((tienda: any) => ({
@@ -15,7 +15,7 @@ export async function getTiendas(): Promise<Store[]> {
 }
 
 export async function getClientesByTienda(tiendaId: number): Promise<Customer[]> {
-  const response = await fetch(`${API_URL}/clientes/${tiendaId}`);
+  const response = await fetch(`${API_URL}/api/clientes/${tiendaId}`);
   const data = await response.json();
   // Se asume que la API retorna: [{ id, nombre, cedula, creditos_no_cancelados, celular }]
   return data.map((cliente: any) => ({
@@ -29,7 +29,7 @@ export async function getClientesByTienda(tiendaId: number): Promise<Customer[]>
 }
 
 export async function getCreditosByCliente(clienteId: number): Promise<Credit[]> {
-  const response = await fetch(`${API_URL}/creditos/${clienteId}`);
+  const response = await fetch(`${API_URL}/api/creditos/${clienteId}`);
   const data = await response.json();
   /*  
     Se asume que la API retorna objetos con la siguiente estructura:

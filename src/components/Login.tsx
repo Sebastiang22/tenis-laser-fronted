@@ -15,7 +15,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
     setError('');
 
     try {
-      const response = await fetch(`${API_URL}/verificar_usuario`, { // Usar API_URL
+      const response = await fetch(`${API_URL}/api/verificar_usuario`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,17 +23,15 @@ export function Login({ onLoginSuccess }: LoginProps) {
         body: JSON.stringify({ nombre_usuario: username, contraseña: password }),
       });
 
-      // Verificar si la respuesta es válida
       if (!response.ok) {
-        const errorData = await response.json(); // Obtener el mensaje de error
+        const errorData = await response.json();
         setError(`Error: ${errorData.message || 'Error en la conexión con el servidor'}`);
         return;
       }
 
       const data = await response.json();
-      console.log('Respuesta de la API:', data); // Registrar la respuesta de la API
+      console.log('Respuesta de la API:', data);
 
-      // Verificar si la respuesta es un JSON válido
       if (data && typeof data === 'object' && 'existe' in data) {
         if (data.existe) {
           onLoginSuccess(); // Llama a la función de éxito
@@ -43,7 +41,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
       } else {
         setError('Respuesta inesperada del servidor');
       }
-    } catch (error) {
+    } catch (error: any) {
       setError('Error al realizar la solicitud: ' + error.message);
     }
   };
